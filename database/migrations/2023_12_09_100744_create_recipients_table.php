@@ -13,10 +13,6 @@ return new class extends Migration
     {
         Schema::create('recipients', function (Blueprint $table) {
             $table->id();
-            $table->string('recipient_name');
-            $table->string('recipient_contact_info');
-            $table->unsignedBigInteger('food_item_id');
-            $table->foreign('food_item_id')->references('id')->on('food_items');
             $table->timestamps();
         });
     }

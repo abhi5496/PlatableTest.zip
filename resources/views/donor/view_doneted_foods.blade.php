@@ -13,13 +13,13 @@
       </tr>
     </thead>
     <tbody>
-        <?php $doneted_foods = DB::table('doneted_foods')->get();?>
-        @foreach ($doneted_foods  as $doneted_food )
+        <?php $doneted_foods = DB::table('doneted_foods')->where('donor_id', $id)->get();?>
+          @foreach ($doneted_foods  as $doneted_food )
         <tr>
-            <td>{{ $loop->index+1 }}</td>
-            <td>{{$doneted_food->donor_name}}</td>
-            <td>{{$doneted_food->food_name}}</td>
-          </tr>
+          <td>{{$loop->index+1 }}</td>
+          <td>{{$doneted_food->donor_name}}</td>
+          <td>{{$doneted_food->food_name}}</td>
+        </tr>
           @endforeach
     </tbody>
   </table>

@@ -34,11 +34,10 @@ class DonorController extends Controller
         return view('donor.view_doneted_foods',['request'=>$foods,'id'=>$id]);
     }
 
-    public function addDoneteFoods(Request $request,$id){
+    public function addDoneteFoods(Request $request, $id){
         $data= [];
-        $donor = DB::table('donors')->whereId($id)->first();
-        $foodItems = DB::table('food_items')->whereId($id)->first();
-        //dd($foodItems);
+        $donor = DB::table('donors')->where('id',$id)->first();
+        $foodItems = DB::table('food_items')->where('id',$request->food_item_id)->first();
         $data['donor_name']= $donor->donor_name;
         $data['food_name']= $foodItems->food_name;
         $data['donor_id']= $id;
